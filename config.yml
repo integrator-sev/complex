@@ -4,6 +4,10 @@
   become: yes
 
   tasks:
+    - name: wait for ssh
+        wait_for:
+          port: 22
+          delay: 10
 
     - name: Install Git
       apt:
@@ -22,6 +26,11 @@
   become: yes
 
   tasks:
+    - name: wait for ssh
+      wait_for:
+        port: 22
+        delay: 10
+
     - name: Install Maven
       apt:
         name: maven
@@ -37,3 +46,4 @@
         repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
         dest: /home/Project
         clone: yes
+
