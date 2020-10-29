@@ -14,7 +14,7 @@ connection {
   type = "ssh"
   port = "22"
   user = "ubuntu"
-  private_key = file("/root/.ssh/id_rsa")
+  private_key = file("/tmp/id_rsa")
   timeout = "1m"
   agent = "true"
 }
@@ -23,7 +23,7 @@ connection {
 
 resource "aws_key_pair"  "ssh_key"{
   key_name = "ssh_key"
-  public_key =  file("/root/.ssh/id_rsa.pub")
+  public_key =  file("/tmp/id_rsa.pub")
 }
 
 resource "aws_security_group" "ssh_access" {
