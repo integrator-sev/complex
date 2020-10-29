@@ -10,15 +10,16 @@
           delay: 10
 
     - name: Install Git
-      apt:
-        name: git
-        state: present
+      apt: name={{ item }} state=installed update_cache=yes
+        with_items:
+          - git
+          - docker.io
 
-    - name: Install docker
-      apt:
-        name: docker.io
-        update_cache: yes
-        state: present
+#    - name: Install docker
+#      apt:
+#        name: docker.io
+#        update_cache: yes
+#        state: present
 
 - name: Instal build env
   hosts: MAVEN
@@ -32,18 +33,24 @@
         delay: 10
 
     - name: Install Maven
-      apt:
-        name: maven
-        state: present
+      apt: name={{ item }} state=installed
+        with_items:
+          - maven
+          - pass
 
-    - name: Create Directory /home/Project
+    - name: Recursively delete existing Directory /home/ubuntu/artifact
+        file:
+          path: /home/ubuntu/artifact
+          state: absent
+
+    - name: Create Directory /home/ubuntu/artifact
       file:
-        path: /home/Project
+        path: /home/ubuntu/artifact
         state: directory
 
     - name: Git Clone
       git:
-        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-        dest: /home/Project
+        repo: https://github.com/integrator-sev/boxfuse-origin.git
+        dest: /home/ubuntu/artifact
         clone: yes
 
