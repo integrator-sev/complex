@@ -8,7 +8,7 @@ resource "aws_instance" "example" {
   ami = "ami-008dea09a148cea39"
   instance_type = "t3.micro"
   associate_public_ip_address = true
-  key_name = "ssh-key"
+  key_name = "ssh_key"
   vpc_security_group_ids = [aws_security_group.ssh_access.id]
   count = "2"
 
@@ -16,16 +16,16 @@ connection {
   type = "ssh"
   port = "22"
   user = "ubuntu"
-  private_key = file("ssh-key")
+  private_key = file("/tmp/id_rsa")
   timeout = "1m"
   agent = "true"
 }
 
 }
 
-resource "aws_key_pair"  "ssh-key"{
+resource "aws_key_pair"  "ssh_key"{
   key_name = "ssh-key"
-  public_key =  file("ssh-key.pub")
+  public_key =  file("/tmp/id_rsa.pub")
 }
 
 resource "aws_security_group" "ssh_access" {
