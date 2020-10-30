@@ -1,3 +1,4 @@
+---
 - name: Install env
   hosts: all
   user: ubuntu
@@ -5,9 +6,9 @@
 
   tasks:
     - name: wait for ssh
-        wait_for:
-          port: 22
-          delay: 10
+      wait_for:
+         port: 22
+         delay: 10
 
     - name: Install Git
       apt: name={{ item }} state=installed update_cache=yes
@@ -39,9 +40,9 @@
           - pass
 
     - name: Recursively delete existing Directory /home/ubuntu/artifact
-        file:
-          path: /home/ubuntu/artifact
-          state: absent
+      file:
+        path: /home/ubuntu/artifact
+        state: absent
 
     - name: Create Directory /home/ubuntu/artifact
       file:
