@@ -12,9 +12,9 @@
 
     - name: Install Git
       apt: name={{ item }} state=installed update_cache=yes
-        with_items:
-          - git
-          - docker.io
+      with_items:
+        - git
+        - docker.io
 
 #    - name: Install docker
 #      apt:
@@ -35,9 +35,9 @@
 
     - name: Install Maven
       apt: name={{ item }} state=installed
-        with_items:
-          - maven
-          - pass
+      with_items:
+        - maven
+        - pass
 
     - name: Recursively delete existing Directory /home/ubuntu/artifact
       file:
