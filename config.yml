@@ -1,7 +1,7 @@
 ---
 - name: Install env
   hosts: all
-  user: ubuntu
+  remote_user: ubuntu
   become: yes
 
   tasks:
@@ -24,7 +24,7 @@
 
 - name: Instal build env
   hosts: MAVEN
-  user: ubuntu
+  remote_user: ubuntu
   become: yes
 
   tasks:
