@@ -5,10 +5,10 @@
   become: yes
 
   tasks:
-    - name: wait for ssh
-      wait_for:
-         port: 22
-         delay: 30
+#    - name: wait for ssh
+#      wait_for:
+#         port: 22
+#         delay: 30
 
     - name: Install Git
       apt: name={{ item }} state=present update_cache=yes
@@ -28,10 +28,10 @@
   become: yes
 
   tasks:
-    - name: wait for ssh
-      wait_for:
-        port: 22
-        delay: 30
+#    - name: wait for ssh
+#      wait_for:
+#        port: 22
+#        delay: 30
 
     - name: Install Maven
       apt: name={{ item }} state=present
