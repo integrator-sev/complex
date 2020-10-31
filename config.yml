@@ -2,6 +2,7 @@
 - name: Install env
   hosts: all
   remote_user: ubuntu
+  ssh_args:
   become: yes
 
   tasks:
