@@ -1,8 +1,6 @@
 ---
 - name: Install env
   hosts: all
-#  remote_user: ubuntu
-#  ssh_args:
   become: yes
 
   tasks:
@@ -17,11 +15,6 @@
         - git
         - docker.io
 
-#    - name: Install docker
-#      apt:
-#        name: docker.io
-#        update_cache: yes
-#        state: present
 
 - name: Instal build env
   hosts: MAVEN
